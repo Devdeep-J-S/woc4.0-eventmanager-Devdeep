@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page %}
+
+<button> <a href = {% url 'home' %}>back</a></button>
+<p> 
+</p>
+{% for event in events %}
+    <p><h1>Event- {{event.id}}</h1></p>
+    <p>{{event.name}}</p>
+    <p>{{event.description}}</p>
+    <p>{{event.link}} </p>
+    <p>{{event.From}} </p>
+    <p>{{event.To}}</p>
+    <p>{{event.reg_deadline}}</p>
+    <p>{{event.host_email}}</p>
+    <p></p>
+{% endfor %}
+<form method = 'POST'>     {% csrf_token %}
+    {% comment %} <p>name : {{ form.name}} </p>
+    <p>Contact no :{{form.contact_no}}</p>
+    <p>email_id: {{ form.email_id}} </p>
+    <p>event_list :{{form.event_list}}</p>
+    <p>registration_type  : {{ form.registration_type}} </p>
+    <p>{{self.registration_type}}</p>
+    <p>no_of_people :{{form.no_of_people}}</p> {% endcomment %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock page %}
