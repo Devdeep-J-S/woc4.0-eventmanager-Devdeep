@@ -82,8 +82,8 @@ class ParticipantData (models.Model):
 
             # Find your Account SID and Auth Token at twilio.com/console
             # and set the environment variables. See http://twil.io/secure
-            account_sid = 'ACf3d4353cc070e52e7337f6db1adf62ca'
-            auth_token ='146b19389e3261f5a07095a8f0d3cc48'
+            account_sid = ''
+            auth_token =''
             client = Client(account_sid, auth_token)
             # print(self.contact_no,str(self.contact_no),type(str(self.contact_no)))
             # will be used in twilio sms part
@@ -103,7 +103,7 @@ class ParticipantData (models.Model):
                 message = client.messages \
                             .create(
                                 body="Your Participant Id : "+ num_id + "\nEvent Details :\n\n" + event_detail,
-                                from_='+17754056285',
+                                from_='',
                                 to= str(self.contact_no)
                             )
                 print(message.sid)  
