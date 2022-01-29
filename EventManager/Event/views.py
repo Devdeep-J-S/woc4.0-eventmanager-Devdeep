@@ -45,12 +45,18 @@ def login_view(request):
     l = Eventdata.objects.all()
     for i in l:
         if form.is_valid():
-            print( form.cleaned_data.get("mail"), form.cleaned_data.get("password"))
+            #print( form.cleaned_data.get("mail"), form.cleaned_data.get("password"))
             if (i.host_email==form.cleaned_data.get("mail") and i.host_password==form.cleaned_data.get("password")):
+                p = []
+                p = ParticipantData.objects.all()
+                participants = []
+                for j in p:
+                    if (j.event_list==(str(i.id)+i.name)):  
+                            participants.append(j)
                 form = login_form()
-                return render(request,"event_detail_view.html",{'event' : i}) 
+                return render(request,"event_detail_view.html",{'participants' : participants}) 
             else:
                 form = login_form()
                 return render(request,"login_error.html",{})
 
-    return render(request,"login.html",{'form':form})    
+    return render(request,"login.html",{'form':form})  
