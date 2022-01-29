@@ -5,11 +5,12 @@
 <button> <a href = {% url 'home' %}>back</a></button>
 <p> 
 </p>
-<p><h1>Event- {{event.id}}</h1></p>
-    <p>Event name : {{event.name}}</p>
-    <p>Event description : {{event.description}}</p>
-    <pe>Event poster link : {{event.link}} </p>
-    <p>Event Starting date : {{event.From}} </p>
-    <p>Event Ending date : {{event.To}}</p>
-    <p>Event registration deadline : {{event.reg_deadline}}</p>
+{% for participant in participants %}
+<p>Participant name : {{participant.name}}</p>
+<p>Participant contact no : {{participant.contact_no}}</p>
+<p>Participant email id : {{participant.email_id}}</p>
+<p>Participant registration type : {{participant.registration_type}}</p>
+<p>Number of people : {{participant.no_of_people}}</p>
+<p></p>
+{% endfor %}
 {% endblock page %}
