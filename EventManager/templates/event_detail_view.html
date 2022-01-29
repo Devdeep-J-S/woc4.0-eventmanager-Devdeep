@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block page %}
+
+<button> <a href = {% url 'home' %}>back</a></button>
+<p> 
+</p>
+<p><h1>Event- {{event.id}}</h1></p>
+    <p>Event name : {{event.name}}</p>
+    <p>Event description : {{event.description}}</p>
+    <pe>Event poster link : {{event.link}} </p>
+    <p>Event Starting date : {{event.From}} </p>
+    <p>Event Ending date : {{event.To}}</p>
+    <p>Event registration deadline : {{event.reg_deadline}}</p>
+{% endblock page %}

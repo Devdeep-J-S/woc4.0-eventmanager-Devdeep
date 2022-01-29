@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page %}
+
+<button> <a href = {% url 'home' %}>back</a></button>
+<p> 
+</p>
+{% for event in events %}
+    <p><h1>Event- {{event.id}}</h1></p>
+    <p>Event name : {{event.name}}</p>
+    <p>Event description : {{event.description}}</p>
+    <pe>Event poster link : {{event.link}} </p>
+    <p>Event Starting date : {{event.From}} </p>
+    <p>Event Ending date : {{event.To}}</p>
+    <p>Event registration deadline : {{event.reg_deadline}}</p>
+    {% comment %} <p>Event's host email {{event.host_email}}</p>  don't know i think we should not provide it {% endcomment %} 
+    <p></p>
+{% endfor %}
+<form method = 'POST'>     {% csrf_token %}
+    {% comment %} <p>name : {{ form.name}} </p>
+    <p>Contact no :{{form.contact_no}}</p>
+    <p>email_id: {{ form.email_id}} </p>
+    <p>event_list :{{form.event_list}}</p>
+    <p>registration_type  : {{ form.registration_type}} </p>
+    <p>{{self.registration_type}}</p>
+    <p>no_of_people :{{form.no_of_people}}</p> {% endcomment %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock page %}
