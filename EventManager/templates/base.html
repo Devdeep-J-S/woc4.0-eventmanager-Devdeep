@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block title %}
+  <title>Event Manager App</title>
+  {% endblock title %}
+  {% comment %} Title change {% endcomment %}
+  {% comment %}
+  <link rel="stylesheet" href="style.css"> {% endcomment %}
+  <style>
+    body{
+      background-color: #1f2937 ;
+      margin: 5%;
+    }
+   a{
+     text-decoration: none;
+     color: white;
+     font-size: large; 
+     }
+   .base
+   {
+     display: flex;
+     flex-direction: column;  
+     padding-left:20%;
+     padding-right: 20%;
+     padding-top: 5%;
+     gap: 19px;
+     flex:  0 1 0%;
+     flex-wrap: wrap;
+     
+   }
+   button
+   {
+     height: min-content;
+     background-color: #3882F6;
+     border-radius: 8px;
+     text-align: center;
+     padding: 15px;
+     border-color: white;
+     border-width: 5px;
+   }
+  </style>
+</head>
+
+<body>
+  {% block page %}
+  <h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; padding: 5%; ">Event Manager App</h1>
+  <div class="base">
+  <button> <a href={% url 'Register' %}>Event Registration</a></button>
+  <button> <a href={% url 'Participant' %}>Participant Registration</a></button>
+  <button> <a href={% url 'login' %}>Event Dashboard</a></button>
+  </div>  
+  {% endblock page %}
+</body>
+
+</html>

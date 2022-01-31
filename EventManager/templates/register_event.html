@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Event Registration </title>
+{% endblock head %}
+{% block page %}
+<h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; ">Event Registration</h1>
+<button style="max-width: max-content; padding: 5px; border-width: 3px;"> <a href = {% url 'home' %}>back to home page</a></button>
+
+
+<form style="display: flex; flex-direction: column; align-items: center ;flex-wrap: wrap; color: white "  method = 'POST' enctype="multipart/form-data" action="">     {% csrf_token %}
+        {{ form.as_p}}
+    <!-- <p>Event Name : {{form.name}}</p>
+    <p>Event Description: {{form.description}}</p>
+    <p>Event poster link: {{form.link}}</p>
+    <p>From : {{form.From}} </p>  <p> To : {{form.To}} </p> <p>  Registration Deadline: {{form.reg_deadline}}</p>
+    <p>Host Email: {{form.host_email}}</p>
+    <p>Host Password : {{form.host_password}}</p>
+    <p></p> -->
+    <input style="max-width: max-content ;background-color:#E5E7EB; font-size: 20px; padding: 5px; color:black ;border-radius: 10px;"  type="submit" value="Submit">
+</form>
+
+
+{% endblock page %}

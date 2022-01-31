@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login for participant information</title>
+{% endblock head %}
+{% block page %}
+<h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; ">Login</h1>
+<button style="max-width: max-content; padding: 5px; border-width: 3px;"> <a href = {% url 'home' %}>back to home page</a></button>
+
+<form style="display: flex; flex-direction: column; align-items: center ;flex-wrap: wrap; color: white "  method = 'POST' enctype="multipart/form-data" action="">     {% csrf_token %}
+    {{ form.as_p}}
+<input style="max-width: max-content ;background-color:#E5E7EB; font-size: 20px; padding: 5px; color:black ;border-radius: 10px;"  type="submit" value="Submit">
+</form>
+
+
+
+
+{% endblock %}

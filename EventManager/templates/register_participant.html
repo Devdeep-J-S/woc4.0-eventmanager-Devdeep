@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Participant Registration </title>
+{% endblock head %}
+{% block page %}
+<button style="max-width: max-content; padding: 5px; border-width: 3px;"> <a href = {% url 'home' %}>back to home page </a></button>
+<h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; ">Registration are open for the following events:</h1>
+{% for event in events %}
+    <p style="color: white" >Event id: {{event.id}}</p>
+    <p style="color: white">Event name : {{event.name}}</p>
+    <p style="color: white">Event description : {{event.description}}</p>
+    <p style="color: white">Event poster link : {{event.link}} </p>
+    <p style="color: white">Event Starting date : {{event.From}} </p>
+    <p style="color: white">Event Ending date : {{event.To}}</p>
+    <p style="color: white"> Event registration deadline : {{event.reg_deadline}}</p>
+    <p style="color: whitesmoke" >-----------------------------------------------------------------------------------------------------------------------------</p>
+    {% comment %} <p>Event's host email {{event.host_email}}</p>  don't know i think we should not provide it {% endcomment %} 
+    <p></p>
+{% endfor %}
+<h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; ">Participant Registration</h1>
+<form style="display: flex; flex-direction: column; align-items: center ;flex-wrap: wrap; color: white "  method = 'POST' enctype="multipart/form-data" action="">     {% csrf_token %}
+    {{ form.as_p}}
+<input style="max-width: max-content ;background-color:#E5E7EB; font-size: 20px; padding: 5px; color:black ;border-radius: 10px;"  type="submit" value="Submit">
+</form>
+</form>
+
+{% endblock page %}

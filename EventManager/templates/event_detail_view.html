@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page %}
+<button> <a href = {% url 'home' %}>back to home page</a></button>
+<h1 style="text-decoration: wavy; color: #F9FAF8; text-align: center; padding: 2%; ">Participants :</h1>
+<p> 
+</p>
+{% for participant in participants %}
+<p style="color: white" >Participant name : {{participant.name}}</p>
+<p style="color: white" >Participant contact no : {{participant.contact_no}}</p>
+<p style="color: white" >Participant email id : {{participant.email_id}}</p>
+<p style="color: white" >Participant registration type : {{participant.registration_type}}</p>
+<p style="color: white" >Number of people : {{participant.no_of_people}}</p>
+<p style="color: whitesmoke" >-----------------------------------------------------------------------------------------------------------------------------------------</p>
+{% endfor %}
+{% endblock page %}
