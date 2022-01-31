@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block page %}
-
-<h1> You have entered wrong password or email </h1>
-<h2>please go to "Event view " to login ,if you don't want to do that then use "home"  </h2>
-<button> <a href = {% url 'login' %}>Event view</a></button>
-<button> <a href = {% url 'home' %}>Home</a></button>
-{% endblock page %}

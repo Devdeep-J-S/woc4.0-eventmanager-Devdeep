@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block page %}
-
-<h1> The end time of an event should be greater than the start time.</h1>
-<h2>If you want to register the event correctly then use go to form and if you don't want to do that then use home </h2>
-<button> <a href = {% url 'Register' %}>Go back to form</a></button>
-<button> <a href = {% url 'home' %}>Home</a></button>
-{% endblock page %}
