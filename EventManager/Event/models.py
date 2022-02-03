@@ -27,22 +27,22 @@ class Eventdata (models.Model):
         if self.From >= self.To :
             # raise error for field
             raise ValidationError({'To': _('End date and time  cannot be smaller or equal to start date and time .')})  
-        try:
-        #mail the host 
-            start_date = self.From.strftime("%m/%d/%Y, %H:%M:%S")
-            end_date = self.To.strftime("%m/%d/%Y, %H:%M:%S")
-            reg_date =  self.reg_deadline.strftime("%m/%d/%Y, %H:%M:%S")
-            subject = 'Thank you for using our site for your Event Registration'
-            message = 'It  means a world to us \nThe Event details:\n' +' Your Event name is ' + self.name +'.\n'+'Event Description: ' +  self.description+'.\n' + ' Your Event\'s poster link is ' + self.link+'.\n' +'Event starting date :'+start_date+'.\n' +'Event ending date :'+end_date+'.\n'+'Event registration deadline :'+reg_date+'.\n' +'You can view Participant data for your event on our portal.\n'+'Event Manager app'
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = []
-            recipient_list.append(self.host_email)
-            send_mail( subject, message, email_from, recipient_list )     
-        
-        except :
-            raise ValidationError({'host_email': ["Oops , Something is wrong with your email id , pls enter correct email id",]}) 
-
-
+        else:    
+            try:
+            #mail the host 
+                start_date = self.From.strftime("%m/%d/%Y, %H:%M:%S")
+                end_date = self.To.strftime("%m/%d/%Y, %H:%M:%S")
+                reg_date =  self.reg_deadline.strftime("%m/%d/%Y, %H:%M:%S")
+                subject = 'Thank you for using our site for your Event Registration'
+                message = 'It  means a world to us \nThe Event details:\n' +' Your Event name is ' + self.name +'.\n'+'Event Description: ' +  self.description+'.\n' + ' Your Event\'s poster link is ' + self.link+'.\n' +'Event starting date :'+start_date+'.\n' +'Event ending date :'+end_date+'.\n'+'Event registration deadline :'+reg_date+'.\n' +'You can view Participant data for your event on our portal.\n'+'Event Manager app'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = []
+                recipient_list.append(self.host_email)
+                send_mail( subject, message, email_from, recipient_list )     
+            
+               except :
+                raise ValidationError({'host_email': ["Oops , Something is wrong with your email id , pls enter correct email id",]})     
+       
     def __str__(self):
         return self.name
 
