@@ -66,30 +66,30 @@ class ParticipantData (models.Model):
         if (self.registration_type=="Group" and self.no_of_people<=1):
             # # raise error for field
             #     flag=False
-               raise ValidationError({'registration_type': ["You have selected Group , please select Individual if you are participating alone. If not then No. of people should be greather than 1.",]})       
-        #all ok then             
+               raise ValidationError({'registration_type': ["You have selected Group , please select Individual if you are participating alone. If not then No. of people should be greather than 1.",]})                   
+           #all ok then             
         # mail the host 
-        #try :
-        subject = 'Thank you for using our site for your participant registration.'
-        event = l[0]
-        for j in l:
-            if (str(j.id)+j.name==self.event_list):
-                event=j      
-        start_date = event.From.strftime("%m/%d/%Y, %H:%M:%S")
-        end_date =  event.To.strftime("%m/%d/%Y, %H:%M:%S")
-        reg_date =  event.reg_deadline.strftime("%m/%d/%Y, %H:%M:%S")
-        num_id=str(self.id)    
-        num_id="3"    
-        event_detail = ' Your Event name is ' +  event.name+'.\n'+'Event Description: ' +  event.description +'.\n' + ' Your Event\'s poster link is ' + event.link +'.\n' +'Event starting date :'+start_date+'.\n' +'Event ending date :'+end_date+'.\n'+'Event registration deadline :'+reg_date+'.\n'  +'Event Manager app'
-        message="Your Participant Id : "+ num_id + "\nEvent Details :\n\n" + event_detail 
-        #message = 'Thanks for using our website , here are some details \nYour Participant Id :'+ str(self.id) +'\n The Event details:\n' +' Participant name: ' +  self.name+'.\n'+'Contact No. : ' + str( self.contact_no) +'.\n' + 'Email ID : ' + self.email_id +'.\n' +'Event that you participated in:'+self.event_list+'.\n' +'Registration type :'+self.registration_type+'.\n'+'No. of people:'+str(self.no_of_people)+'.\n' 
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = []
-        recipient_list.append( self.email_id)
-        send_mail( subject, message, email_from, recipient_list )  
+        try :
+            subject = 'Thank you for using our site for your participant registration.'
+            event = l[0]
+            for j in l:
+                if (str(j.id)+j.name==self.event_list):
+                    event=j      
+            start_date = event.From.strftime("%m/%d/%Y, %H:%M:%S")
+            end_date =  event.To.strftime("%m/%d/%Y, %H:%M:%S")
+            reg_date =  event.reg_deadline.strftime("%m/%d/%Y, %H:%M:%S")
+            num_id=str(self.id)    
+            num_id="3"    
+            event_detail = ' Your Event name is ' +  event.name+'.\n'+'Event Description: ' +  event.description +'.\n' + ' Your Event\'s poster link is ' + event.link +'.\n' +'Event starting date :'+start_date+'.\n' +'Event ending date :'+end_date+'.\n'+'Event registration deadline :'+reg_date+'.\n'  +'Event Manager app'
+            message="Your Participant Id : "+ num_id + "\nEvent Details :\n\n" + event_detail 
+            #message = 'Thanks for using our website , here are some details \nYour Participant Id :'+ str(self.id) +'\n The Event details:\n' +' Participant name: ' +  self.name+'.\n'+'Contact No. : ' + str( self.contact_no) +'.\n' + 'Email ID : ' + self.email_id +'.\n' +'Event that you participated in:'+self.event_list+'.\n' +'Registration type :'+self.registration_type+'.\n'+'No. of people:'+str(self.no_of_people)+'.\n' 
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = []
+            recipient_list.append( self.email_id)
+            send_mail( subject, message, email_from, recipient_list )  
 
-        # except :
-        #     raise ValidationError({'email_id': ["Oops , Something is wrong with your email id , pls enter correct email id",]})    
+        except :
+            raise ValidationError({'email_id': ["Oops , Something is wrong with your email id , pls enter correct email id",]})   
 
 
 
